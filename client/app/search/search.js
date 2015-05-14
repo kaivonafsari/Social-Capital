@@ -1,4 +1,4 @@
-angular.module('socialStock.search', [])
+angular.module('socialStock')
 
 
 /** This is a controller to dictate search functions with the use of the helper functions in the clientFactory */

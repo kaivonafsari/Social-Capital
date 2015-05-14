@@ -61,7 +61,6 @@ module.exports = {
         'screen_name': twitterHandles
     }, function(error, response) {
 
-
         if (error) {
           console.log("Error getting data from Twitter API");
           res.send(404, "Sorry, bad Twitter handle - try again");

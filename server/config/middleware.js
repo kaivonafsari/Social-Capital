@@ -31,10 +31,12 @@ module.exports = function(app, express){
   app.use(express.static(path.join(__dirname,'/../../client')));
 
   app.use('/api/users', auth.authenticate, userRouter);
-  app.use('/api/portfolio', auth.authenticate, portfolioRouter);
-  app.use('/api/twitter', auth.authenticate, twitterRouter);
 
-  app.use('/api/twitter', twitterRouter);
+  app.use('/api/portfolio', auth.authenticate, portfolioRouter);
+  // app.use('/api/portfolio', portfolioRouter);
+  
+  app.use('/api/twitter', auth.authenticate, twitterRouter);
+  // app.use('/api/twitter', twitterRouter);
 
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
 
@@ -42,15 +44,19 @@ module.exports = function(app, express){
   auth.init(passport);
   app.use(passport.initialize());
   app.use(passport.session());
+  
   // Passport Routes 
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/signin.html');
   });
+
   app.get('/auth/twitter', passport.authenticate('twitter'));
+  
   app.get('/auth/twitter/callback', passport.authenticate('twitter',
     { successRedirect: '/', failureRedirect: '/login' }
   ));
+
   app.get('/test', function(req, res){
     console.log('at /test, session: ', req.session);
     res.send('get /test OK');
