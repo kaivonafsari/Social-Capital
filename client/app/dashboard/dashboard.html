@@ -1,36 +1,15 @@
-<div id='info'>
-  <div class='networth'>NET WORTH <span class='rightfloat'>{{ networth | number:2 }}</span></div>
-  <div id='cash'>CASH BALANCE <span class='rightfloat' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
+<div class='pageHeader'>
+  Welcome Chris!
 </div>
-  <div id='dashheaders'>
-    <div class='eighteenpercent'>STOCK NAME</div>
-    <div class='right ninepercent'>SHARES</div>
-    <div class='right ninepercent'>PRICE</div>
-    <div class='right ninepercent'>TOTAL</div>
-    <div class='right ninepercent'>CHANGE</div>
-    <div class='right sixpercent'>SELL</div>
-    <div class='center fourtypercent'>ASSET ALLOCATION</div>
+
+<div class='mainBody dashboard'>
+  <div class="topPortfolios">
+    <h1>Top Portfolios</h1>
   </div>
-<div id='stockdata'>
-  <div id='stocks'>
-    <div ng-repeat='stock in portfolio.stocks'>
-      <div class='stock parent left'>
-        <div class='gray thirtypercent'>
-          <div>{{ stock.name }}</div>
-          <div class='handle'>{{ stock.screen_name }}</div>
-        </div>
-        <div class='gray right fifteenpercent'>{{ stock.shares | number}}</div>
-        <div class='gray right fifteenpercent'>{{ stock.current_price | number:2 }}</div>
-        <div class='gray right fifteenpercent'>{{ stock.current_price * stock.shares | number: 2}}</div>
-        <div class='green right fifteenpercent' ng-class="{ red: (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares < 0 }">{{ (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares |number:2}}</div>
-        <div class='gray center tenpercent'>
-          <button class='sell' ng-click="createAndSell(stock.screen_name, stock.name, stock.current_follower_count, stock.current_date, stock.current_price, stock.shares)">SELL</button>
-        </div>
-      </div>
-    </div>
+  <div class='trending'>
+    <h1>Trending Stocks</h1>
+  </div>
+  <div class='overview'>
+    <h1>Your Portfolio Overview</h1>
   </div>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
-<script src="lib/d3pie.min.js"></script>
-<div id="pieChart"></div>
-<script src="app/dashboard/piechart.js"></script>

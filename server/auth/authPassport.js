@@ -11,13 +11,14 @@ var authenticated = function (req) {
 /**
  * Authenticates requests.
  *
- * Applies the Twitter authentication strategy to the incoming request
+ * Applies the Twitter authentication strategy to the incoming request.
  * If authentication is successful the user will be logged in
  * and populated at `req.session.passport` and a session will be
  * established.  
  *
  * @api public
  */
+
 module.exports = {
   /**
    * Initializes the TwitterStrategy to create a user object if needed
@@ -26,6 +27,7 @@ module.exports = {
    * @param {Passport} passport authentication 
    * @api public
    */
+
   init: function (passport) {
 
     // Serialize the user for storing it in the session

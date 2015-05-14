@@ -11,25 +11,44 @@
 </head>
 <body>
   <div id='nav'>
-    <div id='logo'>SOCIAL<span class='thick'>CAPITAL</span>
+    <div id='logo'><a href='#/dashboard'>SOCAP</a></div>
+    <form ng-submit='search(searchTerm)' class='searchStocks'>
+    <!-- <button ng-click='search(searchTerm)'>search</button> -->
+      <input type='text' ng-model='searchTerm' placeholder='Search for a stock...'>
+    </form>
+
     <ul id='menu'>
-      <li><a href='#/dashboard'>Dash</a></li>
-      <li><a href='#/search'>Search</a></li>
-      <li><a href='/logout'>Logout</a></li>
+      <li><a href='#/dashboard'>Dashboard</a></li>
+      <li><a href='#/portfolio'>My Portfolio</a></li>
     </ul>
+   
+    <div class='userInfo'>
+      <img src='../assets/chris.jpeg'>
+      <h1>Chris Dixon</h1>
     </div>
+
+    <div class="portfolioInfo">
+      <h1>Net Worth</h1>
+      <p>$10,124.12</p>
+
+      <h1>Cash Balance</h1>
+      <p>$1,215.48</p>
+    </div>
+    
   </div>
 
-  <div ng-view> </div>
+  <div ng-view class='mainContent'> </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
 
+  <script src="app/app.js"></script>
   <script src="app/Factories/clientFactory.js"></script>
   <script src="app/auth/auth.js"></script>
-  <script src="app/dashboard/dashboard.js"></script>
+  <script src="app/dashboard/dashCtrl.js"></script>
+  <script src="app/portfolio/portfolioCtrl.js"></script>
+  <script src="app/search/searchResultCtrl.js"></script>
   <script src="app/search/search.js"></script>
-  <script src="app/app.js"></script>
 </body>
 </html>

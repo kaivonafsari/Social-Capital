@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 /* import fonts */
 @font-face{
   font-family: OstrichLight;
@@ -13,43 +9,175 @@
 }
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,700,900);
 
-/* body */
-body{
-  margin: 0;
-  color: #fff;
-  font-size: 3em;
-  top: 0;
-  left: 0;
-  font-family: roboto;
-  font-weight: 100;
-}
 
-/* navigation */
-#nav{
-  font-family: OstrichLight;
-  z-index: 10;
-  padding: .1em .4em;
-  width: 100%;
-  background: #5270B6;
+/*** INDEX HTML ***/
+* {
+  box-sizing: border-box;
 }
-#menu{
-  float: right;
+html {
+  min-height: 100%;
+}
+body {
+  height: 100%;
+  font-family: helvetica;
   margin: 0;
 }
-#menu li{
-  display: inline;
-  margin-right: 1em;
+#nav {
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  padding: 25px 0 0 40px;
+  width: 20%;
+  background: #5270B6;
+  height: 100%;
 }
-.thick{
+#logo {
   font-family: OstrichBlack;
-  font-size: .9em;
+  font-size: 2.8em;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
-a{
+#logo a {
+  color: white;
+  text-decoration: none;
+}
+.userInfo {
+  margin-top: 20px;
+  border-top: 1px solid #C8C8C8;
+  padding-top: 20px;
+}
+.userInfo img {
+  border-radius: 3px;
+  width: 40px;
+  float: left;
+}
+.userInfo h1 {
+  font-size: 1em;
+  margin-left: 10px;
+  display: inline-block;
+}
+#menu {
+  margin: 15px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+#menu li {
+  padding: 10px 0;
+}
+#menu li a {
   color: #fff;
   text-decoration: none;
 }
-a:hover{
-  border-bottom: 5px solid white;
+#menu li a:hover {
+  border-bottom: 2px solid white;
+}
+.portfolioInfo h1 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 20px 0 0 0;
+}
+.portfolioInfo p {
+  margin: 0;
+}
+
+.searchStocks input {
+  width: 85%;
+  border: 1px solid #B2B3B3;
+  border-radius: .5em;
+  padding: 1em 0 1em 30px;
+  background: #F2F2F2;
+  background-image: url(../assets/search.png);
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: 11px 11px;
+}
+
+/*** MAIN CONTENT ***/
+.mainContent {
+  width: 80%;
+  margin: 0;
+  margin-left: 20%;
+}
+.pageHeader {
+  color: #5270B6;
+  border-bottom: 1px solid #5270B6;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 33px;
+}
+.mainBody {
+  margin: 33px;
+}
+
+
+/*** DASHBOARD ***/
+.dashboard h1 {
+  color: #5270B6;
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 5px; 
+  display: inline-block;
+  border-bottom: 1px solid #5270B6;
+}
+
+
+/*** PORTFOLIO ***/
+.portfolio table {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-spacing: 0;
+}
+.portfolio th {
+  background: #606060;
+  color: white;
+}
+.portfolio td, .portfolio th {
+  padding: 10px 5px 10px 10px;
+}
+.stockRow:nth-child(even) {
+  background: #EDEDED;
+}
+.stockRow:nth-child(odd) {
+  background: #D5D5D5;
+}
+.stockRow button {
+  color: #FFF;
+  border: none;
+  border-radius: .5em;
+  padding: 0.7em 1.3em;
+  margin-right: -5px;
+  background: #5270B6;
+}
+.stockRow button:hover {
+  background: #32529B;
+  cursor: pointer;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+
+
+/*** SEARCH RESULT ***/
+.stockNameAndPic img {
+  width: 60px;
+  border-radius: 3px;
+}
+
+
+/* navigation */
+
+.thick{
+  font-family: OstrichBlack;
+  font-size: .9em;
 }
 #info{
   background: #DEDDDD;
@@ -109,18 +237,11 @@ a:hover{
   padding: .25em;
   line-height: 0em;
 }
-input{
-  font-size: OstrichLight;
-}
+
 *:focus{
   outline: none;
 }
-input{
-  width: 100%;
-  border: 1px solid #B2B3B3;
-  border-radius: .5em;
-  padding: 1em;
-}
+
 #search button{
   color: #fff;
   border: solid 1px #B2B3B3;
@@ -150,22 +271,7 @@ input{
   clear: both;
   font-size: .8em
 }
-.sell{
-  color: #fff;
-  border: solid 1px #B2B3B3;
-  border-radius: .5em;
-  padding: .5em 1em;
-  margin-right: -5px;
-}
-.gray{
-  color: #B2B3B3;
-}
-.green{
-  color: green;
-}
-.red{
-  color: red;
-}
+
 #pieChart{
   float: right;
   width: 40%;
