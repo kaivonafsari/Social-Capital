@@ -14,10 +14,9 @@ angular.module('socialStock')
 
     clientFactory.searchStock = function(query){
         clientFactory.getTwitterInfo(query).then(function(data){
-            clientFactory.portfolio = [data.data];
-            console.log('client factory portfolio:', clientFactory.portfolio);
-              // $scope.searchTerm = '';
-            });
+            clientFactory.searchResult = [data.data];
+            clientFactory.searchResult.ipoDate = Date.parse(clientFactory.searchResult[0].created_at);
+        });
     };
 
 
@@ -32,6 +31,7 @@ angular.module('socialStock')
             .then(function(resp) {
                 var stock_id = resp.data.id;
                 // getGrowthRate();
+
                 return resp;
             });
     };
@@ -56,8 +56,10 @@ angular.module('socialStock')
                 url: '/api/portfolio'
             })
             .then(function(resp) {
-                console.log("initial resp: ", resp.data)
-                console.log('getPortfolio response: ', resp)
+                console.log("initial resp: ", resp.data);
+                console.log('getPortfolio response: ', resp);
+                clientFactory.portfolio = resp.data;
+                console.log('after get portfolio', clientFactory.portfolio);
                 return resp;
             });
     };

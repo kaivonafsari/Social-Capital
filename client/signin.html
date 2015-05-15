@@ -6,7 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id='login'>
-  <div class='center large'>SOCIAL<span class='thick'>CAPITAL</span></div>
-  <div class='center'><a href='/auth/twitter'>sign in with twitter</a></div>
+  <h1>SO<span class='cap'>CAP</span></h1>
+  <h2>THE SOCIAL MEDIA STOCK MARKET</h2>
+  <p>Buy and sell shares of your favorite celebrities, politicians, and friends!</p>
+  
+  <a href='/auth/twitter'>Sign in with Twitter</a>
+  <div class="videoWrapper">
+  </div>
+    <video autoplay loop poster="polina.jpg" id="bgvid">
+      <!-- <source src="polina.webm" type="video/webm"> -->
+      <source src="./assets/background.mp4" type="video/mp4">
+    </video>
+
+  <script>
+    function setPlaySpeed() { 
+      var vid = document.getElementById("bgvid");
+      vid.playbackRate = 0.6;
+    } 
+    setPlaySpeed();
+  </script> 
+
 </body>
 </html>

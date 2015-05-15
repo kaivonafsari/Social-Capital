@@ -22,8 +22,11 @@
     </tr>
     <tr ng-repeat='stock in portfolio.stocks' class='stockRow'>
       <td>
-        <div>{{ stock.name }}</div>
-        <div class='handle'>{{ stock.screen_name }}</div>
+        <img src="{{ stock.image_url }}">
+        <div class="stockName">
+          <div>{{ stock.name }}</div>
+          <div class='handle'>{{ stock.screen_name }}</div>
+        </div>
       </td>
       <td>{{ stock.shares | number }}</td>
       <td>${{ stock.current_price | number: 2 }}</td>
