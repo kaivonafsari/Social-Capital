@@ -5,12 +5,23 @@ angular.module('socialStock')
 
 .factory('clientFactory', function($http) {
 
+    var clientFactory = {};
 
     /**
      * This function makes a Twitter API request and returns the user's information (follower count, etc)
      *  @param {String} handle - Twitter handle to query
      */
-    var getTwitterInfo = function(handle) {
+
+    clientFactory.searchStock = function(query){
+        clientFactory.getTwitterInfo(query).then(function(data){
+            clientFactory.portfolio = [data.data];
+            console.log('client factory portfolio:', clientFactory.portfolio);
+              // $scope.searchTerm = '';
+            });
+    };
+
+
+    clientFactory.getTwitterInfo = function(handle) {
         return $http({
                 method: 'POST',
                 url: '/api/twitter',
@@ -19,14 +30,27 @@ angular.module('socialStock')
                 }
             })
             .then(function(resp) {
+                var stock_id = resp.data.id;
+                // getGrowthRate();
                 return resp;
             });
+    };
+
+    clientFactory.getGrowthRate = function(stock_id){
+        return $http({
+                method: 'GET',
+                dataType: 'jsonp',
+                url: 'http://api.twittercounter.com/?apikey=2dc2e68f8a5190a63b2d4c8f4d8a53d8&output=jsonp&twitter_id=1367531'
+        })
+        .then(function(resp){
+            console.log('response from twitter counter', resp);
+        });
     };
 
     /**
      * This function returns the portfolio for the currently logged in user.
      */
-    var getPortfolio = function() {
+    clientFactory.getPortfolio = function() {
         return $http({
                 method: 'GET',
                 url: '/api/portfolio'
@@ -42,7 +66,7 @@ angular.module('socialStock')
      * This function buys a specific stock.
      * @param {Object} stockInfo - stock to buy. Object properties defined in DashboardController
      */
-    var buyStock = function(stockInfo) {
+    clientFactory.buyStock = function(stockInfo) {
         console.log(stockInfo);
         return $http({
                 method: 'POST',
@@ -58,7 +82,7 @@ angular.module('socialStock')
      * This function sells a specific stock.
      * @param {Object} stockInfo - stock to sell. Object properties defined in DashboardController
      */
-    var sellStock = function(stockInfo) {
+    clientFactory.sellStock = function(stockInfo) {
         return $http({
                 method: 'POST',
                 url: '/api/portfolio/sell',
@@ -69,12 +93,20 @@ angular.module('socialStock')
             });
     };
 
+    clientFactory.getUserInfo = function() {
+        return $http({
+                method: 'GET',
+                url: '/api/profileID'
+            })
+            .then(function(resp) {
+                console.log('response from getting server', resp);
+                // console.log("initial resp: ", resp.data)
+                // console.log('getPortfolio response: ', resp)
+                return resp;
+            });
+    };
+
     //provides access to these functions to controllers
-    return {
-        getPortfolio: getPortfolio,
-        getTwitterInfo: getTwitterInfo,
-        buyStock: buyStock,
-        sellStock: sellStock
-    }
+    return clientFactory;
 
 });
