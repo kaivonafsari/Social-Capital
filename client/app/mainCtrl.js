@@ -1,6 +1,8 @@
 angular.module('socialStock')
 
-.controller('MainCtrl', function($scope, $http, $location, clientFactory) {
+.controller('MainCtrl', function($scope, $http, $location, clientFactory, d3Factory) {
+
+  $scope.portfolio = {};
 
   $scope.load = function() {
     clientFactory.getPortfolio()
@@ -14,6 +16,10 @@ angular.module('socialStock')
         $scope.networth += data.data.stocks[i].current_price * data.data.stocks[i].shares;
       }
       
+    })
+    .then(function(){
+      console.log('updating pie');
+      // d3Factory.updatePie($scope.portfolio);
     });
   }
   $scope.load();

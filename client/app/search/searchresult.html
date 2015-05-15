@@ -1,5 +1,5 @@
 <div class='pageHeader'>
-  {{ obj.portfolio[0].name }}
+  {{ obj.searchResult[0].name }}
 </div>
 
 <div class='mainBody'>
@@ -9,11 +9,40 @@
     <div class='stockInfo'>
 
       <div class='stockNameAndPic'>
-        <img src='{{obj.portfolio[0].image_url}}'>
-        <h1>{{ obj.portfolio[0].name }}</h1>
-        <h2>@{{ obj.portfolio[0].screen_name }}</h2>
+        <img src='{{obj.searchResult[0].image_url}}'>
+        <h1>{{ obj.searchResult[0].name }}</h1>
+        <h2>@{{ obj.searchResult[0].screen_name }}</h2>
       </div>
 
+      <div class='stockDetails'>
+        <table>
+          <tr>
+            <td>IPO Date:</td>
+            <td>{{ obj.searchResult.ipoDate | date: mediumDate }}</td>
+          </tr>
+          <tr>
+            <td>Followers:</td>
+            <td>{{ obj.searchResult[0].follower_count_at_query_time }}</td>
+          </tr>
+          <tr>
+            <td>Stock Price:</td>
+            <td>${{ obj.searchResult[0].price_at_purchase | number: 2 }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
+
+  <div class="buyStock">
+    
+    <form ng-submit='buyStock(shareCount)'>
+      <input type='text' ng-model='shareCount' placeholder='shares'>
+      <div>Price: ${{ obj.searchResult[0].price_at_purchase * shareCount | number: 2 }}
+      <button>BUY</button>
+    </form>
+
+  </div>
+
 </div>
+
+

@@ -9,8 +9,7 @@
 }
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,700,900);
 
-
-/*** INDEX HTML ***/
+/*** GENERAL ***/
 * {
   box-sizing: border-box;
 }
@@ -22,9 +21,68 @@ body {
   font-family: helvetica;
   margin: 0;
 }
+
+
+/*** SIGNIN ***/
+
+#login{
+  font-family: helvetica;
+  background: #5270B6;
+  text-align: center;
+  color: white;
+}
+#login h1 {
+  font-family: OstrichBlack;
+  font-size: 8em;
+  margin: 100px 0 0 0;
+}
+.cap {
+  color: #058C0B;
+}
+#login h2 {
+  font-family: OstrichLight;
+  font-size: 4em;
+  margin: 0;
+}
+#login p {
+  font-size: 1.2em;
+  margin-bottom: 40px
+}
+#login a {
+  background: #0575E2;
+  padding: 15px 139px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 20px;
+  color: #FFF;
+  font-size: 1.2em;
+  background-image: url(../assets/twitter.png);
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: 100px 16px;
+}
+#login a:hover {
+  background-color: #046BD0
+}
+video#bgvid {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto; z-index: -100;
+  /*background: url(polina.jpg) no-repeat;*/
+  background-size: cover;
+}
+.videoWrapper {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto; z-index: -99;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+}
+
+/*** INDEX ***/
 #nav {
   color: white;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -56,10 +114,20 @@ body {
   width: 40px;
   float: left;
 }
+.userName {
+  margin-left: 7px;
+  display: inline-block;
+  margin-top: 3px;
+}
 .userInfo h1 {
   font-size: 1em;
-  margin-left: 10px;
-  display: inline-block;
+  margin: 0;  
+}
+.userInfo a {
+  text-decoration: none;
+  color: #C5C5C5;
+  font-size: 0.8em;
+  display: block;
 }
 #menu {
   margin: 15px 0 20px;
@@ -87,7 +155,7 @@ body {
 
 .searchStocks input {
   width: 85%;
-  border: 1px solid #B2B3B3;
+  border: none;
   border-radius: .5em;
   padding: 1em 0 1em 30px;
   background: #F2F2F2;
@@ -146,6 +214,11 @@ body {
 .stockRow:nth-child(odd) {
   background: #D5D5D5;
 }
+.stockRow img {
+  border-radius: 3px;
+  width: 40px;
+  float: left;
+}
 .stockRow button {
   color: #FFF;
   border: none;
@@ -157,6 +230,11 @@ body {
 .stockRow button:hover {
   background: #32529B;
   cursor: pointer;
+}
+.stockName {
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 4px;
 }
 .green {
   color: green;
@@ -230,9 +308,6 @@ body {
   font-size: .5em;
   display: block;
 }
-.center{
-  text-align: center;
-}
 #search {
   padding: .25em;
   line-height: 0em;
@@ -269,11 +344,11 @@ body {
 }
 .handle{
   clear: both;
-  font-size: .8em
+  font-size: .8em;
+  color: #808080;
 }
 
 #pieChart{
-  float: right;
   width: 40%;
 }
 #stockdata{
@@ -303,15 +378,4 @@ body {
 }
 .fourtypercent{
   width: 40%
-}
-/* login page */
-#login{
-  font-family: OstrichLight;
-  background: #5270B6;
-}
-#login div{
-  margin: .5em;
-}
-.large{
-  font-size: 3em;
 }
