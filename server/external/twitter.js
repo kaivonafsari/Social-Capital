@@ -40,6 +40,9 @@ module.exports = {
               twitterUserData["screen_name"] = returnedUserData["screen_name"];
               twitterUserData["name"] = returnedUserData["name"];
               twitterUserData["follower_count_at_query_time"] = returnedUserData["followers_count"];
+              twitterUserData["created_at"] = returnedUserData["created_at"];
+              twitterUserData["id"] = returnedUserData["id"];
+              twitterUserData["image_url"] = returnedUserData["profile_image_url"];
               twitterUserData["price_at_purchase"] = parseInt(returnedUserData["followers_count"]) / 1000000;
               res.json(twitterUserData);
           }

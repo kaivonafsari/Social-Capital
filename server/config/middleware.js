@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var auth = require('../auth/authPassport');
+var twitter = require('../external/twitter.js');
+var User = require('../users/userModel.js');
 
 /**
  * Core Middleware
@@ -38,6 +40,14 @@ module.exports = function(app, express){
   app.use('/api/twitter', auth.authenticate, twitterRouter);
   // app.use('/api/twitter', twitterRouter);
 
+  app.get('/api/profileID', auth.authenticate, function(req, res){
+
+    console.log('going to get profileID', req.session.passport.user);
+
+    res.json(req.session.passport.user);
+    
+  });
+
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
 
   // Passport initialization
@@ -57,9 +67,21 @@ module.exports = function(app, express){
     { successRedirect: '/', failureRedirect: '/login' }
   ));
 
+
   app.get('/test', function(req, res){
     console.log('at /test, session: ', req.session);
     res.send('get /test OK');
   })
+
   require("../external/twitterRoutes.js")(twitterRouter);   //injects twitterRouter into twitterRoutes.js
+  // require("../users/userRoutes.js")(userRoutes);
+  // var getDateCreated = function(){
+  //   var test = { body: { twitterHandle: 'ladygaga'} };
+  //   twitter.getUserInfo( test, { JSON: function(data){ 
+  //     console.log('got a name:', data.name) }
+  //   });
+  //   // console.log('object response', obj);
+  // }
+  // getDateCreated();
+
 }

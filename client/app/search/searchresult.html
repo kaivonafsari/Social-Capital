@@ -1,5 +1,5 @@
 <div class='pageHeader'>
-  Lady Gaga
+  {{ obj.portfolio[0].name }}
 </div>
 
 <div class='mainBody'>
@@ -9,22 +9,11 @@
     <div class='stockInfo'>
 
       <div class='stockNameAndPic'>
-        <img src='../assets/gaga.jpeg'>
-        <h1>Lady Gaga</h1>
-        <h2>@ladygaga</h2>
+        <img src='{{obj.portfolio[0].image_url}}'>
+        <h1>{{ obj.portfolio[0].name }}</h1>
+        <h2>@{{ obj.portfolio[0].screen_name }}</h2>
       </div>
 
-
-
     </div>
-
-
-
-
-
   </div>
-
-
-
-
 </div>
