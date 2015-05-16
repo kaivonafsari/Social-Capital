@@ -16,6 +16,8 @@
   "dependencies": {
     "angular": "~1.2.18",
     "angular-route": "~1.2.18",
-    "angular-mocks": "~1.2.18"
+    "angular-mocks": "~1.2.18",
+    "angular-chart.js": "~0.7.1",
+    "Chart.js": "~1.0.2"
   }
 }

@@ -2,15 +2,15 @@ angular.module('socialStock')
 
 .controller('MainCtrl', function($scope, $http, $location, clientFactory, d3Factory) {
 
-  $scope.portfolio = {};
+  $scope.portfolioOuter = {};
 
   $scope.load = function() {
     clientFactory.getPortfolio()
     .then(function(data) {
-      $scope.portfolio = data.data;
+      $scope.portfolioOuter = data.data;
       console.log('portfolio', $scope.portfolio)
       $scope.networth = 0;
-      $scope.networth += $scope.portfolio.cash_balance;
+      $scope.networth += $scope.portfolioOuter.cash_balance;
       
       for (var i = 0; i < data.data.stocks.length; i++) {
         $scope.networth += data.data.stocks[i].current_price * data.data.stocks[i].shares;

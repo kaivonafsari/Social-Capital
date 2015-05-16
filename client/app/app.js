@@ -3,6 +3,7 @@ angular.module('socialStock', [
   // 'socialStock.dash',
   // 'socialStock.search',
   // 'socialStock.factory',
+  'chart.js',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {

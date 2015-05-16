@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" href="bower_components/angular-chart/dist/angular-chart.css">
 </head>
 <body ng-controller='MainCtrl'>
   <div id='nav'>
@@ -35,7 +36,7 @@
       <p>${{ networth | number: 2 }}</p>
 
       <h1>Cash Balance</h1>
-      <p>${{ portfolio.cash_balance | number: 2 }}</p>
+      <p>${{ portfolioOuter.cash_balance | number: 2 }}</p>
     </div>
     
   </div>
@@ -45,6 +46,8 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/Chart/Chart.js"></script>
+  <script src="bower_components/angular-chart/dist/angular-chart.js"></script>
 
   <script src="app/app.js"></script>
   <script src="app/Factories/clientFactory.js"></script>

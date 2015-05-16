@@ -3,6 +3,8 @@
 </div>
 
 <div class='mainBody'>
+
+
   
   <div class='stockOverview'>
     
@@ -10,8 +12,10 @@
 
       <div class='stockNameAndPic'>
         <img src='{{obj.searchResult[0].image_url}}'>
-        <h1>{{ obj.searchResult[0].name }}</h1>
-        <h2>@{{ obj.searchResult[0].screen_name }}</h2>
+        <div class="stockName">
+          <h1>{{ obj.searchResult[0].name }}</h1>
+          <h2>@{{ obj.searchResult[0].screen_name }}</h2>
+        </div>
       </div>
 
       <div class='stockDetails'>
@@ -31,14 +35,27 @@
         </table>
       </div>
     </div>
+  
+    <div class='stockChart'>
+      <canvas id="line" class="chart chart-line" data="data"
+      labels="labels" legend="true" series="series"
+      click="onClick">
+      </canvas> 
+    </div>
   </div>
 
   <div class="buyStock">
+
+    <h1>Buy @{{ obj.searchResult[0].screen_name }} Stock</h1>
+    <h2>Your current cash balance: ${{ portfolioOuter.cash_balance | number: 2 }}</h2>
     
     <form ng-submit='buyStock(shareCount)'>
-      <input type='text' ng-model='shareCount' placeholder='shares'>
-      <div>Price: ${{ obj.searchResult[0].price_at_purchase * shareCount | number: 2 }}
-      <button>BUY</button>
+      <input type='text' ng-model='shareCount' placeholder='0'>
+      <label>shares</label>
+      <div class='buyShares'>
+        <div>Price: ${{ shareCount * obj.searchResult[0].price_at_purchase | number: 2 }}
+        <button>BUY</button>
+      </div>
     </form>
 
   </div>

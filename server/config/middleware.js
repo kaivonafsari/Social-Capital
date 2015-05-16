@@ -7,6 +7,7 @@ var passport = require('passport');
 var auth = require('../auth/authPassport');
 var twitter = require('../external/twitter.js');
 var User = require('../users/userModel.js');
+var request = require('request');
 
 /**
  * Core Middleware
@@ -33,6 +34,15 @@ module.exports = function(app, express){
   app.use(express.static(path.join(__dirname,'/../../client')));
 
   app.use('/api/users', auth.authenticate, userRouter);
+
+  app.get('/getgrowth', function(req, res){
+    request('http://api.twittercounter.com/?apikey=2dc2e68f8a5190a63b2d4c8f4d8a53d8&twitter_id=17503180&output=JSONP', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body) // Show the HTML for the Google homepage. 
+        res.json(body);
+      }
+    })
+  });
 
   app.use('/api/portfolio', auth.authenticate, portfolioRouter);
   // app.use('/api/portfolio', portfolioRouter);
