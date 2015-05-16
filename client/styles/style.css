@@ -245,9 +245,85 @@ video#bgvid {
 
 
 /*** SEARCH RESULT ***/
+.stockOverview {
+  width: 90%;
+  border-bottom: 1px solid #C8C8C8;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.stockInfo {
+  width: 500px;
+  margin: 0;
+  display: inline-block;
+  float: left;
+  margin-right: 60px;
+}
+#line {
+  width: 600px;
+}
+.stockNameAndPic {
+  height: 100px;
+  float: left;
+  margin-right: 50px;
+}
 .stockNameAndPic img {
   width: 60px;
   border-radius: 3px;
+  float: left;
+  border: 1px solid #D3D3D3;
+}
+.stockNameAndPic h1 {
+  margin: 0;
+  font-size: 1.4em;
+}
+.stockNameAndPic h2 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #999;
+}
+.buyStock {
+  margin-bottom: 200px;
+}
+.buyStock h1 {
+  font-size: 1.2em;
+  margin: 0;
+}
+.buyStock h2 {
+  font-size: 0.8em;
+  color: grey;
+  font-weight: 400;
+  margin: 5px 0 10px;
+}
+.buyStock input {
+  padding: 9px 10px;
+  border-radius: 3px;
+  border: 1px solid #979797;
+  background: #F5F5F5;
+  width: 110px;
+  text-align: right;
+  font-size: 1em;
+}
+.buyShares {
+  width: 164px;
+  border-top: 1px solid #C8C8C8;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+.buyShares button {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 1em;
+  padding: 10px 0;
+  border: none;
+  border-radius: 3px;
+  color: #FFF;
+  background-color: #0575E2;
+}
+.buyShares button:hover {
+  background-color: #046BD0;
+  cursor: pointer;
 }
 
 
