@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 angular.module('socialStock')
 
 .controller('MainCtrl', function($scope, $http, $location, clientFactory, d3Factory) {
@@ -39,3 +40,34 @@ angular.module('socialStock')
 
 
 });
+=======
+function mainCtrl($scope, $location, clientFactory){
+
+    $scope.refresh = function() {
+      clientFactory.getPortfolio()
+      .then(function(data) {
+        
+        $scope.portfolio = data.data;
+        console.log(data.data)
+
+        $scope.networth = 0;
+        $scope.networth += $scope.portfolio.cash_balance;
+        
+        for (var i = 0; i < data.data.stocks.length; i++) {
+          $scope.networth += data.data.stocks[i].current_price * data.data.stocks[i].shares;
+        }
+        
+      });
+
+      // clientFactory.getUser()
+  }
+
+  $scope.refresh();
+
+
+
+}
+
+angular.module('socialStock')
+.controller('mainCtrl', ['$scope', '$location', 'clientFactory', mainCtrl]);
+>>>>>>> Before big update!

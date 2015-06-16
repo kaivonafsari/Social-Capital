@@ -64,6 +64,17 @@ angular.module('socialStock')
             });
     };
 
+    var getUser = function() {
+        console.log("YOOOOOOOOO!");
+        return $http({
+                method: 'GET',
+                url: '/api/user',
+            })
+            .then(function(resp) {
+                return resp;
+            });
+    };
+
     /**
      * This function buys a specific stock.
      * @param {Object} stockInfo - stock to buy. Object properties defined in DashboardController

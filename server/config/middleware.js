@@ -5,9 +5,16 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var auth = require('../auth/authPassport');
+<<<<<<< HEAD
 var twitter = require('../external/twitter.js');
 var User = require('../users/userModel.js');
+<<<<<<< HEAD
 var request = require('request');
+=======
+=======
+var user = require('../user')
+>>>>>>> Before big update!
+>>>>>>> Another rebase!
 
 /**
  * Core Middleware
@@ -45,8 +52,8 @@ module.exports = function(app, express){
   });
 
   app.use('/api/portfolio', auth.authenticate, portfolioRouter);
-  // app.use('/api/portfolio', portfolioRouter);
   
+  app.use('api/user', auth.authenticate, userRoutes)
   app.use('/api/twitter', auth.authenticate, twitterRouter);
   // app.use('/api/twitter', twitterRouter);
 
@@ -82,6 +89,7 @@ module.exports = function(app, express){
     console.log('at /test, session: ', req.session);
     res.send('get /test OK');
   })
+<<<<<<< HEAD
 
   require("../external/twitterRoutes.js")(twitterRouter);   //injects twitterRouter into twitterRoutes.js
   // require("../users/userRoutes.js")(userRoutes);
@@ -94,4 +102,8 @@ module.exports = function(app, express){
   // }
   // getDateCreated();
 
+=======
+  require("../external/twitterRoutes.js")(twitterRouter); 
+  require("../users/userRoutes.js")(userRoutes)  //injects twitterRouter into twitterRoutes.js
+>>>>>>> Before big update!
 }
